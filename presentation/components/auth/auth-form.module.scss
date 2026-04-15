@@ -1,0 +1,374 @@
+.authPage {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 520px);
+  background:
+    radial-gradient(circle at top left, rgba(10, 95, 255, 0.18), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(0, 181, 173, 0.14), transparent 28%),
+    linear-gradient(135deg, #f4f7fb 0%, #eef3f8 42%, #e8eef6 100%);
+}
+
+@media (min-width: 1080px) {
+  .authPageDesktopLocked {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .authPageDesktopLocked .formPanel {
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .authPageDesktopLocked .card {
+    margin: 0 auto;
+  }
+}
+
+.heroPanel {
+  position: relative;
+  padding: 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.heroPanel::before {
+  content: "";
+  position: absolute;
+  inset: 48px 48px auto auto;
+  width: 220px;
+  height: 220px;
+  border-radius: 32px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.18));
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  transform: rotate(12deg);
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #12314d;
+}
+
+.brandMark {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #0f62fe, #1a365d);
+  color: #ffffff;
+  box-shadow: 0 18px 32px rgba(15, 98, 254, 0.22);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 540px;
+  display: grid;
+  gap: 24px;
+}
+
+.eyebrow {
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0f62fe;
+  font-weight: 700;
+}
+
+.heroTitle {
+  font-size: clamp(2.8rem, 4vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  color: #10253e;
+}
+
+.heroDescription {
+  max-width: 480px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #4d637a;
+}
+
+.heroMetrics {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.metricCard {
+  padding: 20px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(18, 49, 77, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.metricValue {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #10253e;
+}
+
+.metricLabel {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #5d7389;
+}
+
+.formPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 32px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 250, 252, 0.98));
+  border-left: 1px solid rgba(18, 49, 77, 0.08);
+}
+
+.card {
+  width: 100%;
+  padding: 40px;
+  border-radius: 32px;
+  background: #ffffff;
+  border: 1px solid rgba(18, 49, 77, 0.08);
+  box-shadow: 0 24px 48px rgba(16, 37, 62, 0.08);
+}
+
+.cardHeader {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.cardTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: #10253e;
+}
+
+.cardDescription {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #61778f;
+}
+
+.form {
+  display: grid;
+  gap: 18px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.label {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1e3852;
+}
+
+.input {
+  width: 100%;
+  min-height: 56px;
+  padding: 0 16px;
+  border-radius: 18px;
+  border: 1px solid #d3dde8;
+  background: #f9fbfd;
+  color: #10253e;
+  font-size: 0.98rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.input::placeholder {
+  color: #89a0b6;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #0f62fe;
+  box-shadow: 0 0 0 4px rgba(15, 98, 254, 0.14);
+  background: #ffffff;
+}
+
+.inputError {
+  border-color: #d14343;
+  box-shadow: 0 0 0 4px rgba(209, 67, 67, 0.1);
+}
+
+.fieldHint {
+  font-size: 0.82rem;
+  color: #7388a0;
+  line-height: 1.5;
+}
+
+.fieldError {
+  font-size: 0.82rem;
+  color: #b42318;
+}
+
+.passwordPolicy {
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: #f5f8fc;
+  border: 1px solid #dbe5ef;
+}
+
+.passwordPolicyTitle {
+  margin-bottom: 12px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #46617d;
+}
+
+.policyList {
+  display: grid;
+  gap: 10px;
+}
+
+.policyItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: #556f88;
+}
+
+.policyIndicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  background: #c7d5e3;
+}
+
+.policyItemValid {
+  color: #0f5132;
+}
+
+.policyItemValid .policyIndicator {
+  background: #198754;
+  box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.14);
+}
+
+.status {
+  padding: 14px 16px;
+  border-radius: 18px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.statusError {
+  background: #fff3f2;
+  border: 1px solid #f3c3c0;
+  color: #b42318;
+}
+
+.statusSuccess {
+  background: #effaf3;
+  border: 1px solid #bfe3c6;
+  color: #166534;
+}
+
+.submitButton {
+  min-height: 58px;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0f62fe, #15408b);
+  color: #ffffff;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+  box-shadow: 0 18px 32px rgba(15, 98, 254, 0.24);
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.submitButton:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.footer {
+  margin-top: 24px;
+  font-size: 0.92rem;
+  color: #61778f;
+}
+
+.footerLink {
+  color: #0f62fe;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 1080px) {
+  .authPage {
+    grid-template-columns: 1fr;
+  }
+
+  .heroPanel {
+    padding: 40px 28px 24px;
+    gap: 40px;
+  }
+
+  .heroMetrics {
+    grid-template-columns: 1fr;
+  }
+
+  .formPanel {
+    padding: 0 20px 28px;
+    border-left: 0;
+  }
+
+  .card {
+    margin-top: -8px;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroPanel {
+    padding: 28px 20px 16px;
+  }
+
+  .card {
+    padding: 28px 20px;
+    border-radius: 24px;
+  }
+
+  .heroTitle {
+    font-size: 2.4rem;
+  }
+}

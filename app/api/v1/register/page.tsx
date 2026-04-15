@@ -1,11 +1,12 @@
-import React from "react";
+import type { Metadata } from "next";
 
-const Login = () => {
-  return (
-    <div>
-      <h1> Register</h1>
-    </div>
-  );
+import { RegisterForm } from "@/presentation/components/auth";
+
+export const metadata: Metadata = {
+  title: "Register | Peer Ledger",
+  description: "Registro de usuarios para Peer Ledger.",
 };
 
-export default Login;
+export default function RegisterPage() {
+  return <RegisterForm />;
+}
