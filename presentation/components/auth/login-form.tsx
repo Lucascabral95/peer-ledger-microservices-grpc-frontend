@@ -1,35 +1,19 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import type { LoginResponseInterface } from "@/domain/interfaces";
 import { loginUser } from "@/infrastructure/services";
 import { persistAuthSession } from "@/infrastructure/services";
+import { AUTH_ROUTES, LOGIN_FIELDS } from "@/shared/constants";
 import { useAuthStore } from "@/lib/store";
-import { AUTH_ROUTES } from "@/shared/constants";
 import { loginSchema } from "@/shared/utils";
-import { useRouter } from "next/navigation";
 
 import {
   AuthForm,
   LOGIN_DEFAULT_VALUES,
   type LoginFormValues,
 } from "./auth-form";
-
-const LOGIN_FIELDS = [
-  {
-    name: "email" as const,
-    label: "Correo corporativo",
-    type: "email" as const,
-    placeholder: "equipo@peerledger.com",
-    autoComplete: "email",
-  },
-  {
-    name: "password" as const,
-    label: "Contraseña",
-    type: "password" as const,
-    placeholder: "Ingresa tu contraseña",
-    autoComplete: "current-password",
-  },
-];
 
 export function LoginForm() {
   const router = useRouter();
