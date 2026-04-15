@@ -2,7 +2,7 @@
 
 import type { RegisterResponseInterface } from "@/domain/interfaces";
 import { registerUser } from "@/infrastructure/services";
-import { AUTH_ROUTES } from "@/shared/constants";
+import { AUTH_ROUTES, REGISTER_FIELDS } from "@/shared/constants";
 import { registerSchema } from "@/shared/utils";
 import { useRouter } from "next/navigation";
 
@@ -11,30 +11,6 @@ import {
   REGISTER_DEFAULT_VALUES,
   type RegisterFormValues,
 } from "./auth-form";
-
-const REGISTER_FIELDS = [
-  {
-    name: "name" as const,
-    label: "Nombre completo",
-    type: "text" as const,
-    placeholder: "Lucia Fernandez",
-    autoComplete: "name",
-  },
-  {
-    name: "email" as const,
-    label: "Correo corporativo",
-    type: "email" as const,
-    placeholder: "equipo@peerledger.com",
-    autoComplete: "email",
-  },
-  {
-    name: "password" as const,
-    label: "Contraseña",
-    type: "password" as const,
-    placeholder: "Crea una contraseña segura",
-    autoComplete: "new-password",
-  },
-];
 
 export function RegisterForm() {
   const router = useRouter();

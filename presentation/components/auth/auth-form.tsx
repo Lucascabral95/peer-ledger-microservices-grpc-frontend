@@ -4,68 +4,23 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useState } from "react";
 import {
-  type DefaultValues,
   type FieldPath,
   type FieldValues,
   type Resolver,
   useForm,
   useWatch,
 } from "react-hook-form";
-import type { ZodType } from "zod";
 
 import type {
+  AuthFormProps,
   LoginRequestInterface,
   RegisterRequestInterface,
 } from "@/domain/interfaces";
 import type { AuthActionState } from "@/domain/types";
 import { usePasswordRequirements } from "@/presentation/hooks";
 import { extractErrorMessage, extractFieldErrors } from "@/shared/utils";
-
+import { HERO_METRICS } from "@/shared/constants";
 import styles from "./auth-form.module.scss";
-
-interface AuthFormField<TFormValues extends FieldValues> {
-  name: FieldPath<TFormValues>;
-  label: string;
-  type: "text" | "email" | "password";
-  placeholder: string;
-  autoComplete: string;
-}
-
-interface AuthFormProps<TFormValues extends FieldValues, TResponse> {
-  title: string;
-  description: string;
-  eyebrow: string;
-  heroTitle: string;
-  heroDescription: string;
-  submitLabel: string;
-  footerLabel: string;
-  footerHref: string;
-  footerAction: string;
-  fields: AuthFormField<TFormValues>[];
-  schema: ZodType<TFormValues>;
-  defaultValues: DefaultValues<TFormValues>;
-  submitAction: (values: TFormValues) => Promise<TResponse>;
-  successMessage: string;
-  showPasswordPolicy?: boolean;
-  lockViewportOnDesktop?: boolean;
-  onSuccess?: (data: TResponse) => Promise<void> | void;
-  successDataRenderer?: (data: TResponse) => string;
-}
-
-const HERO_METRICS = [
-  {
-    value: "24/7",
-    label: "Operacion continua entre usuarios y microservicios",
-  },
-  {
-    value: "<120ms",
-    label: "Interacciones agiles para flujos criticos del negocio",
-  },
-  {
-    value: "P2P",
-    label: "Arquitectura preparada para pagos y transferencias directas",
-  },
-];
 
 export function AuthForm<TFormValues extends FieldValues, TResponse = unknown>({
   title,
