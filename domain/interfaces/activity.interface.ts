@@ -2,6 +2,12 @@ export type MeActivityKind = "transfer" | "topup" | "all";
 
 export type MeActivityStatus = "completed" | "blocked" | "failed" | "partial";
 
+export type MeActivityItemKind =
+  | "transfer"
+  | "transfer_sent"
+  | "transfer_received"
+  | "topup";
+
 export interface MeActivityRequestInterface {
   page?: number;
   page_size?: number;
@@ -25,7 +31,7 @@ export interface MeActivityDataInterface {
 
 export interface MeActivityItemInterface {
   id: string;
-  kind: "transfer" | "topup";
+  kind: MeActivityItemKind;
   status: MeActivityStatus;
   amount: number;
   balance_after?: number;

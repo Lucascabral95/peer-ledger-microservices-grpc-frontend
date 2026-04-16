@@ -1,7 +1,5 @@
-import React from "react";
+import { DashboardHistory } from "@/presentation/components/dashboard";
 
-const History = () => {
-  return <div></div>;
-};
-
-export default History;
+export default function HistoryPage() {
+  return <DashboardHistory />;
+}

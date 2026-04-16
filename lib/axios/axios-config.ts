@@ -86,21 +86,24 @@ axiosInstance.interceptors.response.use(
 );
 
 function normalizeBackendError(error: unknown) {
-    const axiosError = error as AxiosError<{
-      message?: string;
-      error?: string;
-    }>;
-    const responseData = axiosError.response?.data;
-    const backendMessage =
-      responseData?.message ||
-      responseData?.error ||
-      "No se pudo completar la solicitud.";
+  const axiosError = error as AxiosError<{
+    message?: string;
+    error?: string;
+    rule_code?: string;
+  }>;
+  const responseData = axiosError.response?.data;
+  const backendMessage =
+    responseData?.message ||
+    responseData?.error ||
+    "No se pudo completar la solicitud.";
 
-    return {
-      ...responseData,
-      status: axiosError.response?.status,
-      message: backendMessage,
-    };
+  return {
+    ...responseData,
+    status: axiosError.response?.status,
+    message: backendMessage,
+    rule_code: responseData?.rule_code,
+    retryAfter: axiosError.response?.headers?.["retry-after"],
+  };
 }
 
 export default axiosInstance;

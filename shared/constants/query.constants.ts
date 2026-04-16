@@ -18,6 +18,9 @@ export const QUERY_KEYS = {
   history: {
     byUser: (userId: string) => ["history", "by-user", userId] as const,
   },
+  transfers: {
+    create: () => ["transfers", "create"] as const,
+  },
   me: {
     profile: () => ["me", "profile"] as const,
     dashboard: () => ["me", "dashboard"] as const,
