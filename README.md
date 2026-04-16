@@ -24,6 +24,7 @@
   - [Login](#login)
   - [Register](#register)
   - [Dashboard principal](#dashboard-principal)
+  - [Mi billetera](#mi-billetera)
   - [Historial](#historial)
   - [Transferencias](#transferencias)
   - [Perfil](#perfil)
@@ -61,9 +62,10 @@ El foco del proyecto es mantener una arquitectura limpia, separando responsabili
 - Login y register con Zod + React Hook Form.
 - Dashboard principal consumiendo `/me/dashboard`.
 - Perfil consumiendo `/me/profile`.
-- Wallet consumiendo `/me/wallet`.
+- Mi billetera consumiendo `/me/wallet`, `/me/topups` y `POST /topups`.
 - Historial operativo consumiendo `/me/activity`.
 - Transferencias P2P con `POST /transfers`.
+- Recargas de saldo con `POST /topups`.
 - Idempotency key para reintentos seguros de transferencias.
 - Manejo de `rule_code` antifraude y `Retry-After`.
 - Cache de datos con TanStack Query.
@@ -148,6 +150,7 @@ peer-ledger-frontend/
 │   ├── api/v1/register/              # Vista de registro
 │   └── api/v1/dashboard/             # Layout y vistas protegidas
 │       ├── history/                  # Historial operativo
+│       ├── my-wallet/                # Mi billetera y recargas
 │       ├── profile/                  # Perfil
 │       ├── security/                 # Seguridad
 │       └── tranfers/                 # Transferencias P2P
@@ -243,6 +246,60 @@ Renderiza:
 - Resumen de topups.
 - Alertas operativas.
 - Acciones rápidas.
+
+<a id="mi-billetera"></a>
+### Mi billetera
+
+Ruta:
+
+```txt
+/api/v1/dashboard/my-wallet
+```
+
+Fuentes:
+
+```txt
+GET /me/wallet
+GET /me/topups
+POST /topups
+```
+
+Query params soportados para recargas:
+
+```txt
+page
+page_size
+from
+to
+```
+
+Funcionalidades:
+
+- Saldo disponible como dato principal.
+- Resumen de recargas:
+  - recargas totales
+  - monto total recargado
+  - recargas de hoy
+  - monto recargado hoy
+- Formulario operativo de recarga con Zod + React Hook Form.
+- Request real a `POST /topups`.
+- `user_id` tomado desde la sesión autenticada.
+- Historial interno de recargas.
+- Filtros por fechas `from` y `to`.
+- Paginación de recargas.
+- Alertas operativas por recargas `blocked`, `failed` o `partial`.
+- Estado positivo cuando no hay alertas.
+- Acciones rápidas hacia transferencias, historial y perfil.
+- Estados de loading, error total, error parcial, empty y sesión faltante.
+
+Invalidación de cache luego de recargar:
+
+```txt
+/me/wallet
+/me/dashboard
+/me/topups
+/me/activity
+```
 
 <a id="historial"></a>
 ### Historial
@@ -428,6 +485,7 @@ getMeWallet()
 getMeTopups(params)
 getMeActivity(params)
 createTransfer(payload)
+createTopUp(payload)
 ```
 
 Endpoints `/me/*`:
@@ -444,6 +502,12 @@ Transferencias:
 
 ```txt
 POST /transfers
+```
+
+Recargas:
+
+```txt
+POST /topups
 ```
 
 El interceptor Axios:
@@ -498,7 +562,7 @@ Stack:
 
 Cobertura actual:
 
-- Utils de dashboard, historial, transferencias, perfil y seguridad.
+- Utils de dashboard, historial, transferencias, billetera, perfil y seguridad.
 - Hooks de TanStack Query.
 - Hooks de view model.
 - Servicios HTTP.

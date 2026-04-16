@@ -9,3 +9,4 @@ export * from "./profile";
 export * from "./security";
 export * from "./history";
 export * from "./transfers";
+export * from "./wallet";

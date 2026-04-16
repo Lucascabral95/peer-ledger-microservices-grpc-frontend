@@ -16,6 +16,10 @@ export const TRANSFER_ENDPOINTS = {
   create: "/transfers",
 } as const;
 
+export const TOPUP_ENDPOINTS = {
+  create: "/topups",
+} as const;
+
 export const ME_ENDPOINTS = {
   profile: "/me/profile",
   dashboard: "/me/dashboard",

@@ -8,3 +8,5 @@ export * from "./profile.utils";
 export * from "./security.utils";
 export * from "./transfer-form.schema";
 export * from "./transfer.utils";
+export * from "./wallet-form.schema";
+export * from "./wallet.utils";

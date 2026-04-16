@@ -1,7 +1,5 @@
-import React from "react";
+import { DashboardWallet } from "@/presentation/components/dashboard";
 
-const MyWallet = () => {
-  return <div></div>;
-};
-
-export default MyWallet;
+export default function MyWalletPage() {
+  return <DashboardWallet />;
+}

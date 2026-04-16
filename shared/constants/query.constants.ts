@@ -21,6 +21,9 @@ export const QUERY_KEYS = {
   transfers: {
     create: () => ["transfers", "create"] as const,
   },
+  topups: {
+    create: () => ["topups", "create"] as const,
+  },
   me: {
     profile: () => ["me", "profile"] as const,
     dashboard: () => ["me", "dashboard"] as const,
