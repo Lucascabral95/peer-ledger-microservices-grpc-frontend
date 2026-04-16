@@ -3,3 +3,7 @@ export * from "./user";
 export * from "./wallet";
 export * from "./transaction";
 export * from "./auth";
+export * from "./dashboard.interface";
+export * from "./profile.interface";
+export * from "./activity.interface";
+export * from "./topups.interface";
