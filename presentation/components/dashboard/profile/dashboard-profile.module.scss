@@ -1,0 +1,417 @@
+.profilePage {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.profileHeader,
+.identityCard,
+.detailCard,
+.securityCard,
+.actionsCard,
+.errorCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(circle at top right, rgba(77, 124, 255, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.026) 0%, rgba(255, 255, 255, 0.012) 100%);
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(16px);
+}
+
+.profileHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px;
+}
+
+.sectionEyebrow {
+  display: inline-flex;
+  margin-bottom: 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.headerTitle,
+.identityName,
+.cardTitle,
+.detailValue,
+.asideValue {
+  color: var(--text-primary);
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.headerDescription,
+.headerMeta,
+.identityEmail,
+.identityDescription,
+.detailHelper,
+.signalDescription,
+.errorDescription {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.headerDescription {
+  max-width: 720px;
+  margin-top: 12px;
+}
+
+.headerMeta {
+  margin-top: 8px;
+  color: var(--text-muted);
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.statusDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--success);
+  box-shadow: 0 0 0 4px rgba(0, 200, 150, 0.12);
+}
+
+.identityCard {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 240px;
+  gap: 22px;
+  align-items: center;
+  padding: 26px;
+}
+
+.avatar {
+  width: clamp(78px, 12vw, 118px);
+  height: clamp(78px, 12vw, 118px);
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  color: #ffffff;
+  font-size: clamp(1.65rem, 4vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.24), transparent 28%),
+    linear-gradient(135deg, var(--accent), var(--accent-strong));
+  box-shadow:
+    0 0 0 1px rgba(77, 124, 255, 0.35),
+    0 24px 48px rgba(47, 99, 255, 0.2);
+}
+
+.identityContent {
+  min-width: 0;
+}
+
+.identityName {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
+}
+
+.identityEmail {
+  margin-top: 12px;
+  font-size: 1rem;
+}
+
+.identityDescription {
+  max-width: 620px;
+  margin-top: 12px;
+  color: var(--text-muted);
+}
+
+.identityAside {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.asideLabel,
+.detailLabel,
+.signalLabel {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.asideValue {
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.detailCard {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+}
+
+.detailValue {
+  font-size: 1.08rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.detailHelper {
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}
+
+.profileGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+  gap: 18px;
+}
+
+.securityCard,
+.actionsCard,
+.errorCard {
+  padding: 22px;
+}
+
+.cardHeader {
+  margin-bottom: 18px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.securityList,
+.actionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.securitySignal {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.securitySignalSuccess {
+  background: rgba(0, 200, 150, 0.08);
+  border-color: rgba(0, 200, 150, 0.16);
+}
+
+.securitySignalInfo {
+  background: rgba(77, 124, 255, 0.08);
+  border-color: rgba(77, 124, 255, 0.14);
+}
+
+.securitySignalWarning {
+  background: rgba(255, 166, 92, 0.08);
+  border-color: rgba(255, 166, 92, 0.14);
+}
+
+.actionLink,
+.secondaryActionLink,
+.retryButton {
+  display: grid;
+  gap: 5px;
+  min-height: 58px;
+  align-content: center;
+  border-radius: 16px;
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.actionLink {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.actionLink small {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.actionLink:hover,
+.secondaryActionLink:hover,
+.retryButton:hover {
+  transform: translateY(-1px);
+}
+
+.retryButton {
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  box-shadow:
+    0 0 0 1px rgba(77, 124, 255, 0.25),
+    0 16px 32px rgba(47, 99, 255, 0.16);
+}
+
+.secondaryActionLink {
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.errorActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.skeletonHeader,
+.skeletonIdentity,
+.skeletonDetail,
+.skeletonPanel {
+  border-radius: 22px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.065),
+    rgba(255, 255, 255, 0.03)
+  );
+  background-size: 180% 100%;
+  animation: profileShimmer 1.5s linear infinite;
+}
+
+.skeletonHeader {
+  padding: 24px;
+}
+
+.skeletonLineLong,
+.skeletonLineMedium {
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.skeletonLineLong {
+  width: 42%;
+  margin-bottom: 14px;
+}
+
+.skeletonLineMedium {
+  width: 68%;
+}
+
+.skeletonIdentity {
+  min-height: 230px;
+}
+
+.skeletonDetail {
+  min-height: 132px;
+}
+
+.skeletonPanel {
+  min-height: 260px;
+}
+
+@keyframes profileShimmer {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -20% 0;
+  }
+}
+
+@media (max-width: 1180px) {
+  .detailsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profileGrid,
+  .identityCard {
+    grid-template-columns: 1fr;
+  }
+
+  .identityAside {
+    width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .profileHeader {
+    display: grid;
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .statusBadge {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .identityCard,
+  .securityCard,
+  .actionsCard,
+  .errorCard {
+    padding: 18px;
+  }
+
+  .avatar {
+    border-radius: 22px;
+  }
+}

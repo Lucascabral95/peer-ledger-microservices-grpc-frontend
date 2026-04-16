@@ -1,6 +1,7 @@
 export * from "./api.constants";
 export * from "./query.constants";
 export * from "./dashboard.constants";
+export * from "./profile.constants";
 export * from "./auth.constants";
 export * from "./hero-metrics-constants";
 export * from "./loginRegister.constants";
