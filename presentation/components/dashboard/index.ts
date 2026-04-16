@@ -6,3 +6,4 @@ export * from "./dashboard-sidebar-header";
 export * from "./dashboard-workspace-card";
 export * from "./home";
 export * from "./profile";
+export * from "./security";

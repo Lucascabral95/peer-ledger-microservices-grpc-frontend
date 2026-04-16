@@ -1,7 +1,5 @@
-import React from "react";
+import { DashboardSecurity } from "@/presentation/components/dashboard";
 
-const Security = () => {
-  return <div></div>;
-};
-
-export default Security;
+export default function SecurityPage() {
+  return <DashboardSecurity />;
+}

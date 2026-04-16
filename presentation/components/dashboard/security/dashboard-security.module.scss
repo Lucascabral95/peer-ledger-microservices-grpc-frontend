@@ -1,0 +1,449 @@
+.securityPage {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.securityHeader,
+.sessionCard,
+.policyCard,
+.fraudCard,
+.rateLimitCard,
+.passwordCard,
+.actionsCard,
+.errorCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(circle at top right, rgba(77, 124, 255, 0.1), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.026) 0%, rgba(255, 255, 255, 0.012) 100%);
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(16px);
+}
+
+.securityHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px;
+}
+
+.sectionEyebrow {
+  display: inline-flex;
+  margin-bottom: 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.headerTitle,
+.cardTitle,
+.policyValue {
+  color: var(--text-primary);
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.headerDescription,
+.headerMeta,
+.cardDescription,
+.policyDescription {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.headerDescription {
+  max-width: 740px;
+  margin-top: 12px;
+}
+
+.headerMeta {
+  margin-top: 8px;
+  color: var(--text-muted);
+}
+
+.statusBadge,
+.cardPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.statusBadge {
+  padding: 12px 14px;
+}
+
+.cardPill {
+  padding: 9px 12px;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.statusDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--success);
+  box-shadow: 0 0 0 4px rgba(0, 200, 150, 0.12);
+}
+
+.sessionCard,
+.fraudCard,
+.rateLimitCard,
+.passwordCard,
+.actionsCard,
+.errorCard {
+  padding: 22px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.sessionStats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 22px 0 0;
+}
+
+.sessionStats div,
+.compactItem,
+.requirementItem,
+.fraudRule {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.sessionStats div {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+}
+
+.sessionStats dt,
+.policyLabel {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.sessionStats dd {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.08rem;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.policyGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.policyCard {
+  display: grid;
+  gap: 10px;
+  min-height: 170px;
+  padding: 18px;
+}
+
+.policyValue {
+  font-size: 1.12rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.policyDescription {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.securityGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.secondaryColumn {
+  display: grid;
+  gap: 18px;
+}
+
+.fraudRules,
+.compactList,
+.actionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fraudRules,
+.compactList,
+.requirementGrid,
+.actionsList {
+  margin-top: 18px;
+}
+
+.fraudRule,
+.compactItem {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+}
+
+.ruleCode {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  padding: 8px 10px;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  overflow-wrap: anywhere;
+}
+
+.operationalNote {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 18px;
+  color: var(--text-secondary);
+  background: rgba(77, 124, 255, 0.08);
+  border: 1px solid rgba(77, 124, 255, 0.14);
+}
+
+.operationalNote p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.operationalNote code {
+  padding: 2px 6px;
+  border-radius: 8px;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.requirementGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.requirementItem {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+}
+
+.requirementItem strong {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.actionLink {
+  display: grid;
+  gap: 5px;
+  min-height: 58px;
+  align-content: center;
+  border-radius: 16px;
+  padding: 14px 16px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.actionLink small {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.actionLink:hover {
+  transform: translateY(-1px);
+  border-color: rgba(77, 124, 255, 0.22);
+  background: rgba(77, 124, 255, 0.08);
+}
+
+.toneSuccess {
+  border-color: rgba(0, 200, 150, 0.16);
+  background-color: rgba(0, 200, 150, 0.07);
+}
+
+.toneSuccess .statusDot {
+  background: var(--success);
+  box-shadow: 0 0 0 4px rgba(0, 200, 150, 0.12);
+}
+
+.toneInfo {
+  border-color: rgba(77, 124, 255, 0.16);
+  background-color: rgba(77, 124, 255, 0.07);
+}
+
+.toneInfo .statusDot {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(77, 124, 255, 0.14);
+}
+
+.toneWarning {
+  border-color: rgba(255, 166, 92, 0.18);
+  background-color: rgba(255, 166, 92, 0.08);
+}
+
+.toneWarning .statusDot {
+  background: #ffa65c;
+  box-shadow: 0 0 0 4px rgba(255, 166, 92, 0.14);
+}
+
+.toneDanger {
+  border-color: rgba(255, 89, 116, 0.2);
+  background-color: rgba(255, 89, 116, 0.09);
+}
+
+.toneDanger .statusDot {
+  background: #ff5974;
+  box-shadow: 0 0 0 4px rgba(255, 89, 116, 0.14);
+}
+
+.skeletonHeader,
+.skeletonPanel,
+.skeletonTallPanel,
+.skeletonPolicy {
+  border-radius: 22px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.065),
+    rgba(255, 255, 255, 0.03)
+  );
+  background-size: 180% 100%;
+  animation: securityShimmer 1.5s linear infinite;
+}
+
+.skeletonHeader {
+  padding: 24px;
+}
+
+.skeletonPanel {
+  min-height: 230px;
+}
+
+.skeletonTallPanel {
+  min-height: 560px;
+}
+
+.skeletonPolicy {
+  min-height: 170px;
+}
+
+.skeletonLineLong,
+.skeletonLineMedium {
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.skeletonLineLong {
+  width: 42%;
+  margin-bottom: 14px;
+}
+
+.skeletonLineMedium {
+  width: 68%;
+}
+
+@keyframes securityShimmer {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -20% 0;
+  }
+}
+
+@media (max-width: 1180px) {
+  .policyGrid,
+  .sessionStats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .securityGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .securityHeader {
+    display: grid;
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .statusBadge,
+  .cardPill {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cardHeader {
+    display: grid;
+  }
+
+  .policyGrid,
+  .sessionStats,
+  .requirementGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sessionCard,
+  .fraudCard,
+  .rateLimitCard,
+  .passwordCard,
+  .actionsCard,
+  .errorCard {
+    padding: 18px;
+  }
+}

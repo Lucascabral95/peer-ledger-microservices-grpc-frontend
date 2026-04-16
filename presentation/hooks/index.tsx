@@ -8,3 +8,4 @@ export * from "./use-me-wallet-query";
 export * from "./use-me-topups-query";
 export * from "./use-me-activity-query";
 export * from "./use-profile-view-model";
+export * from "./use-security-view-model";
