@@ -1,7 +1,5 @@
-import React from "react";
+import { DashboardTransfers } from "@/presentation/components/dashboard";
 
-const Transfers = () => {
-  return <div></div>;
-};
-
-export default Transfers;
+export default function TransfersPage() {
+  return <DashboardTransfers />;
+}

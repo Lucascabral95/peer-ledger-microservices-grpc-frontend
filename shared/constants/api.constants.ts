@@ -12,6 +12,10 @@ export const TRANSACTION_ENDPOINTS = {
   getHistoryByUserId: (userId: string) => `/history/${userId}`,
 } as const;
 
+export const TRANSFER_ENDPOINTS = {
+  create: "/transfers",
+} as const;
+
 export const ME_ENDPOINTS = {
   profile: "/me/profile",
   dashboard: "/me/dashboard",

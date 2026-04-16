@@ -7,3 +7,5 @@ export * from "./dashboard-workspace-card";
 export * from "./home";
 export * from "./profile";
 export * from "./security";
+export * from "./history";
+export * from "./transfers";
