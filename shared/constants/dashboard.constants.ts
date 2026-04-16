@@ -4,6 +4,12 @@ export interface DashboardSectionItem {
   shortLabel: string;
 }
 
+export interface DashboardQuickActionItem {
+  id: string;
+  label: string;
+  href: string;
+}
+
 export const DASHBOARD_SECTION_ITEMS: DashboardSectionItem[] = [
   {
     href: "/api/v1/dashboard",
@@ -34,5 +40,28 @@ export const DASHBOARD_SECTION_ITEMS: DashboardSectionItem[] = [
     href: "/api/v1/dashboard/security",
     label: "Seguridad",
     shortLabel: "SE",
+  },
+];
+
+export const DASHBOARD_HOME_QUICK_ACTIONS: DashboardQuickActionItem[] = [
+  {
+    id: "top-up",
+    label: "Recargar saldo",
+    href: "/api/v1/dashboard/my-wallet",
+  },
+  {
+    id: "transfer",
+    label: "Enviar dinero",
+    href: "/api/v1/dashboard/tranfers",
+  },
+  {
+    id: "history",
+    label: "Ver historial",
+    href: "/api/v1/dashboard/history",
+  },
+  {
+    id: "profile",
+    label: "Ir a mi perfil",
+    href: "/api/v1/dashboard/profile",
   },
 ];

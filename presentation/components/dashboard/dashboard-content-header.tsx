@@ -30,11 +30,6 @@ export function DashboardContentHeader({
 
         <span className={styles.contentEyebrow}>Dashboard</span>
         <h1 className={styles.contentTitle}>{activeLabel}</h1>
-        <p className={styles.contentDescription}>
-          Este contenedor padre deja preparada la estructura para que cada
-          modulo renderice su contenido a la derecha sin duplicar navegacion ni
-          layout.
-        </p>
       </div>
 
       <div className={styles.contentStatus}>

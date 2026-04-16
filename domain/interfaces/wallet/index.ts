@@ -6,3 +6,4 @@ export * from "./top-up-request-interface";
 export * from "./top-up-response-interface";
 export * from "./transfer-request-interface";
 export * from "./transfer-response-interface";
+export * from "./me-wallet.interface";
