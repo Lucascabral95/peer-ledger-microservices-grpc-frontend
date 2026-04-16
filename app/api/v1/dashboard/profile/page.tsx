@@ -1,7 +1,5 @@
-import React from "react";
+import { DashboardProfile } from "@/presentation/components/dashboard";
 
-const Profile = () => {
-  return <div></div>;
-};
-
-export default Profile;
+export default function ProfilePage() {
+  return <DashboardProfile />;
+}
