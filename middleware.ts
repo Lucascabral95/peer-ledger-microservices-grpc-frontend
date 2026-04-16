@@ -33,10 +33,6 @@ export function middleware(request: NextRequest) {
       return redirectToRefresh(request, AUTH_ROUTES.home);
     }
 
-    if (pathname === "/") {
-      return NextResponse.redirect(new URL(AUTH_ROUTES.login, request.url));
-    }
-
     return NextResponse.next();
   }
 
