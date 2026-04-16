@@ -5,6 +5,7 @@ export * from "./history.constants";
 export * from "./profile.constants";
 export * from "./security.constants";
 export * from "./transfers.constants";
+export * from "./wallet.constants";
 export * from "./auth.constants";
 export * from "./hero-metrics-constants";
 export * from "./loginRegister.constants";

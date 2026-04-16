@@ -12,3 +12,5 @@ export * from "./use-profile-view-model";
 export * from "./use-security-view-model";
 export * from "./use-create-transfer-mutation";
 export * from "./use-transfers-view-model";
+export * from "./use-create-topup-mutation";
+export * from "./use-wallet-view-model";
