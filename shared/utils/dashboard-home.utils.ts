@@ -88,9 +88,10 @@ export function buildDashboardHomeModelFromMeDashboard({
     latestTransfers: dashboard.recent_transfers.slice(0, 5).map((transfer) => ({
       id: transfer.id,
       date: transfer.created_at,
-      counterparty:
-        transfer.counterparty_name ||
-        truncateCounterparty(transfer.counterparty_id),
+      counterparty: getCounterpartyLabel({
+        name: transfer.counterparty_name,
+        id: transfer.counterparty_id,
+      }),
       amount: transfer.amount,
       direction: getMeDashboardTransferDirection(transfer),
       status: transfer.status,
@@ -185,8 +186,10 @@ export function getLatestTransfers(
       return {
         id: transaction.transaction_id,
         date: transaction.created_at,
-        counterparty:
-          transaction.counterparty_name || truncateCounterparty(counterpartyId),
+        counterparty: getCounterpartyLabel({
+          name: transaction.counterparty_name,
+          id: counterpartyId,
+        }),
         amount: transaction.amount,
         direction: isSent ? "sent" : "received",
         status: transaction.status,
@@ -373,16 +376,34 @@ function isSameLocalDay(date: string, now: Date): boolean {
   );
 }
 
+function getCounterpartyLabel({
+  name,
+  id,
+}: {
+  name?: string | null;
+  id?: string | null;
+}): string {
+  const normalizedName = name?.trim();
+
+  if (normalizedName) {
+    return normalizedName;
+  }
+
+  return truncateCounterparty(id);
+}
+
 function truncateCounterparty(counterpartyId?: string | null): string {
-  if (!counterpartyId) {
-    return "Usuario externo";
+  const normalizedCounterpartyId = counterpartyId?.trim();
+
+  if (!normalizedCounterpartyId) {
+    return "Contraparte no disponible";
   }
 
-  if (counterpartyId.length <= 8) {
-    return counterpartyId;
+  if (normalizedCounterpartyId.length <= 8) {
+    return normalizedCounterpartyId;
   }
 
-  return `${counterpartyId.slice(0, 8)}...`;
+  return `${normalizedCounterpartyId.slice(0, 8)}...`;
 }
 
 function getLatestMeDashboardUpdateDate(

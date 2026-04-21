@@ -78,6 +78,29 @@ export const LANDING_METRICS = [
   },
 ] as const;
 
+export const LANDING_TRANSFER_RECEIVER = {
+  eyebrow: "Recibir transferencias",
+  title: "Recibí dinero compartiendo tu ID.",
+  description:
+    "Cada usuario tiene un identificador unico que puede copiar desde su perfil para recibir transferencias P2P.",
+  highlights: [
+    {
+      label: "Copiar ID",
+      description:
+        "El usuario copia su receiver_id desde el dashboard protegido.",
+    },
+    {
+      label: "Compartir",
+      description: "Ese ID se usa como receptor al enviar dinero.",
+    },
+    {
+      label: "Auditar",
+      description:
+        "La transferencia queda visible en historial y actividad reciente.",
+    },
+  ],
+} as const;
+
 export const LANDING_PRODUCT_MODULES = [
   {
     title: "Dashboard ejecutivo",

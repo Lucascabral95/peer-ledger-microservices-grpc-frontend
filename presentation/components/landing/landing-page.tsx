@@ -6,6 +6,7 @@ import { LandingHero } from "./landing-hero";
 import { LandingMetrics } from "./landing-metrics";
 import { LandingProductModules } from "./landing-product-modules";
 import { LandingStack } from "./landing-stack";
+import { LandingTransferReceiver } from "./landing-transfer-receiver";
 import styles from "./landing-page.module.scss";
 
 export function LandingPage() {
@@ -14,6 +15,7 @@ export function LandingPage() {
       <LandingHeader />
       <LandingHero />
       <LandingMetrics />
+      <LandingTransferReceiver />
       <LandingProductModules />
       <LandingArchitectureSecurity />
       <LandingStack />

@@ -60,6 +60,11 @@ export const DASHBOARD_HOME_QUICK_ACTIONS: DashboardQuickActionItem[] = [
     href: "/api/v1/dashboard/history",
   },
   {
+    id: "receive-money",
+    label: "Recibir dinero",
+    href: "/api/v1/dashboard/profile#receive-id",
+  },
+  {
     id: "profile",
     label: "Ir a mi perfil",
     href: "/api/v1/dashboard/profile",

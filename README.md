@@ -31,6 +31,7 @@
   - [Seguridad](#seguridad)
 - [🔐 Autenticación y sesión](#autenticación-y-sesión)
 - [🌐 Capa HTTP y servicios](#capa-http-y-servicios)
+- [Contrato esperado del backend](#contrato-esperado-del-backend)
 - [🧠 Estado y cache](#estado-y-cache)
 - [🧪 Testing](#testing)
 - [🚀 Instalación y ejecución local](#instalación-y-ejecución-local)
@@ -245,7 +246,8 @@ Renderiza:
 - Últimas transferencias.
 - Resumen de topups.
 - Alertas operativas.
-- Acciones rápidas.
+- Acciones rápidas, incluyendo `Recibir dinero` hacia `/api/v1/dashboard/profile#receive-id`.
+- Últimas transferencias con contraparte por `counterparty_name` o `counterparty_id` cuando backend lo informa.
 
 <a id="mi-billetera"></a>
 ### Mi billetera
@@ -342,6 +344,7 @@ Funcionalidades:
   - `transfer_received` -> `Recibida`
   - `transfer_sent` -> `Enviada`
   - fallback por `direction`
+- Saldo posterior por `balance_after`, calculado desde la perspectiva del usuario autenticado.
 
 <a id="transferencias"></a>
 ### Transferencias
@@ -518,6 +521,89 @@ El interceptor Axios:
 - Normaliza errores.
 - Conserva `rule_code`.
 - Conserva `Retry-After` como `retryAfter`.
+
+<a id="contrato-esperado-del-backend"></a>
+## Contrato esperado del backend
+
+Para que el frontend pueda mostrar correctamente contraparte, dirección y saldo posterior, las rutas que devuelven actividad financiera deben responder datos desde la perspectiva del usuario autenticado.
+
+Rutas que deben mantenerse alineadas:
+
+```txt
+GET /me/dashboard
+GET /me/activity
+GET /history/{userID}
+```
+
+### Contraparte en transferencias
+
+En cada transferencia, el backend debería enviar:
+
+```json
+{
+  "counterparty_id": "id-del-otro-usuario",
+  "counterparty_name": "Nombre del otro usuario"
+}
+```
+
+Regla esperada:
+
+```txt
+transfer_sent:
+  counterparty_id = receiver_id
+  counterparty_name = receiver.name
+
+transfer_received:
+  counterparty_id = sender_id
+  counterparty_name = sender.name
+```
+
+`counterparty_id` debería venir siempre que exista otro usuario. `counterparty_name` puede ser opcional, pero mejora la experiencia visual en Dashboard e Historial.
+
+Fallback actual del frontend:
+
+```txt
+counterparty_name
+counterparty_id truncado
+Contraparte no disponible
+```
+
+Si `/api/v1/dashboard` muestra `Contraparte no disponible`, significa que el backend no envió `counterparty_name` ni `counterparty_id` para ese movimiento.
+
+### Saldo posterior por movimiento
+
+`balance_after` debe representar el saldo posterior del usuario autenticado, no un balance global ni el balance de la otra parte.
+
+Regla esperada:
+
+```txt
+transfer_sent:
+  balance_after = saldo del sender después de enviar
+
+transfer_received:
+  balance_after = saldo del receiver después de recibir
+
+topup:
+  balance_after = saldo del usuario después de la recarga
+```
+
+Ejemplo para una transferencia recibida:
+
+```json
+{
+  "id": "transfer-123",
+  "kind": "transfer_received",
+  "status": "completed",
+  "amount": 3000,
+  "direction": "received",
+  "counterparty_id": "sender-user-id",
+  "counterparty_name": "Juan Perez",
+  "balance_after": 18000,
+  "created_at": "2026-04-20T22:20:00Z"
+}
+```
+
+Si `/api/v1/dashboard/history` muestra `No disponible` en `Saldo posterior`, significa que el backend no envió `balance_after` para ese movimiento.
 
 ## 🧠 Estado y cache
 

@@ -8,6 +8,7 @@ import { DashboardProfileDetailsGrid } from "./dashboard-profile-details-grid";
 import { DashboardProfileError } from "./dashboard-profile-error";
 import { DashboardProfileHeader } from "./dashboard-profile-header";
 import { DashboardProfileIdentityCard } from "./dashboard-profile-identity-card";
+import { DashboardProfileReceiveIdCard } from "./dashboard-profile-receive-id-card";
 import { DashboardProfileSecurityCard } from "./dashboard-profile-security-card";
 import { DashboardProfileSkeleton } from "./dashboard-profile-skeleton";
 import styles from "./dashboard-profile.module.scss";
@@ -56,6 +57,7 @@ export function DashboardProfile() {
       />
 
       <DashboardProfileIdentityCard profile={profile} />
+      <DashboardProfileReceiveIdCard profile={profile} />
       <DashboardProfileDetailsGrid details={profile.details} />
 
       <div className={styles.profileGrid}>
