@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 import { DashboardProfile } from "@/presentation/components/dashboard";
 import { useProfileViewModel } from "@/presentation/hooks";
@@ -10,6 +10,16 @@ jest.mock("@/presentation/hooks", () => ({
 const mockedUseProfileViewModel = jest.mocked(useProfileViewModel);
 
 describe("DashboardProfile", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: {
+        writeText: jest.fn(async () => undefined),
+      },
+    });
+  });
+
   it("renders the loading skeleton", () => {
     mockedUseProfileViewModel.mockReturnValue(createProfileHookState({
       isLoading: true,
@@ -32,6 +42,13 @@ describe("DashboardProfile", () => {
     expect(screen.getAllByText("Lucas Cabral")[0]).toBeInTheDocument();
     expect(screen.getAllByText("lucas@example.com")[0]).toBeInTheDocument();
     expect(screen.getAllByText("bac81847...")[0]).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "ID para recibir transferencias" }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("bac81847-0eef-427d-8025")).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Copiar ID de usuario" }),
+    ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Revisar seguridad/i })).toHaveAttribute(
       "href",
       "/api/v1/dashboard/security",
@@ -40,6 +57,21 @@ describe("DashboardProfile", () => {
       "href",
       "/api/v1/dashboard/my-wallet",
     );
+  });
+
+  it("copies the full user id to clipboard", async () => {
+    mockedUseProfileViewModel.mockReturnValue(createProfileHookState());
+
+    render(<DashboardProfile />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Copiar ID de usuario" }));
+
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
+      "bac81847-0eef-427d-8025",
+    );
+    await waitFor(() => {
+      expect(screen.getByText("Copiado")).toBeInTheDocument();
+    });
   });
 
   it("renders the error state", () => {

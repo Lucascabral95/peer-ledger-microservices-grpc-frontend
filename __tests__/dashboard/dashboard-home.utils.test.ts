@@ -119,6 +119,35 @@ describe("dashboard-home utils", () => {
     expect(latestTransfers[1].direction).toBe("received");
   });
 
+  it("falls back to counterparty id or an unavailable label", () => {
+    const latestTransfers = getLatestTransfers(
+      [
+        {
+          transaction_id: "tx-with-id",
+          sender_id: "user-1",
+          receiver_id: "external-counterparty-123",
+          amount: 100,
+          status: "completed",
+          type: "transfer",
+          created_at: "2026-04-15T14:00:00.000Z",
+        },
+        {
+          transaction_id: "tx-without-id",
+          sender_id: "user-1",
+          receiver_id: "",
+          amount: 50,
+          status: "completed",
+          type: "transfer",
+          created_at: "2026-04-15T13:00:00.000Z",
+        },
+      ],
+      "user-1",
+    );
+
+    expect(latestTransfers[0].counterparty).toBe("external...");
+    expect(latestTransfers[1].counterparty).toBe("Contraparte no disponible");
+  });
+
   it("summarizes recent topups with count and latest amount", () => {
     const topups = getTopupSummary(historyFixture.transactions, NOW);
 
@@ -158,7 +187,7 @@ describe("dashboard-home utils", () => {
     });
 
     expect(dashboard.greetingName).toBe("Lucas");
-    expect(dashboard.quickActions).toHaveLength(4);
+    expect(dashboard.quickActions).toHaveLength(5);
     expect(dashboard.latestTransfers).toHaveLength(5);
   });
 
@@ -208,8 +237,15 @@ describe("dashboard-home utils", () => {
             kind: "transfer_received",
             status: "partial",
             amount: 150,
-            counterparty_id: "user-3",
+            counterparty_id: "external-counterparty-123",
             created_at: "2026-04-15T13:00:00.000Z",
+          },
+          {
+            id: "transfer-3",
+            kind: "transfer_sent",
+            status: "completed",
+            amount: 80,
+            created_at: "2026-04-15T12:30:00.000Z",
           },
         ],
         recent_topups: [
@@ -241,6 +277,12 @@ describe("dashboard-home utils", () => {
     expect(dashboard.latestTransfers[1]).toMatchObject({
       direction: "received",
       status: "partial",
+      counterparty: "external...",
+    });
+    expect(dashboard.latestTransfers[2]).toMatchObject({
+      direction: "sent",
+      status: "completed",
+      counterparty: "Contraparte no disponible",
     });
     expect(dashboard.topupSummary).toMatchObject({
       count: 3,

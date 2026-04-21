@@ -76,7 +76,8 @@
 .sectionShell,
 .splitSection,
 .stackSection,
-.ctaSection {
+.ctaSection,
+.transferReceiverSection {
   width: min(1180px, calc(100% - 48px));
   margin: 0 auto;
 }
@@ -197,6 +198,7 @@
 
 .heroContent h1,
 .sectionHeader h2,
+.transferReceiverContent h2,
 .architectureCard h2,
 .securityCard h2,
 .stackSection h2,
@@ -214,6 +216,7 @@
 
 .heroContent p,
 .sectionHeader p,
+.transferReceiverContent p,
 .ctaSection p {
   max-width: 720px;
   margin: 0;
@@ -238,6 +241,7 @@
 
 .heroPanel,
 .moduleCard,
+.transferReceiverContent,
 .architectureCard,
 .securityCard,
 .stackSection,
@@ -356,10 +360,19 @@
 }
 
 .sectionShell,
+.transferReceiverSection,
 .splitSection,
 .stackSection,
 .ctaSection {
   margin-top: 24px;
+}
+
+.transferReceiverContent {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.78fr);
+  gap: 22px;
+  align-items: center;
+  padding: 28px;
 }
 
 .sectionShell {
@@ -372,6 +385,7 @@
 }
 
 .sectionHeader h2,
+.transferReceiverContent h2,
 .architectureCard h2,
 .securityCard h2,
 .stackSection h2,
@@ -382,8 +396,39 @@
 }
 
 .sectionHeader p,
+.transferReceiverContent p,
 .ctaSection p {
   margin-top: 14px;
+}
+
+.receiveFeatureList {
+  display: grid;
+  gap: 12px;
+}
+
+.receiveFeatureCard {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(77, 124, 255, 0.18);
+  background:
+    radial-gradient(circle at top right, rgba(0, 200, 150, 0.1), transparent 32%),
+    rgba(255, 255, 255, 0.035);
+}
+
+.receiveFeatureCard span {
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.receiveFeatureCard p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .moduleGrid {
@@ -532,6 +577,7 @@
   }
 
   .heroInner,
+  .transferReceiverContent,
   .splitSection {
     grid-template-columns: 1fr;
   }
@@ -558,6 +604,7 @@
   .heroInner,
   .contentRail,
   .sectionShell,
+  .transferReceiverSection,
   .splitSection,
   .stackSection,
   .ctaSection {
@@ -596,6 +643,7 @@
   }
 
   .heroPanel,
+  .transferReceiverContent,
   .architectureCard,
   .securityCard,
   .stackSection,

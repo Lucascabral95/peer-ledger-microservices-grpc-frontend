@@ -72,6 +72,11 @@ describe("DashboardHome", () => {
             href: "/api/v1/dashboard/history",
           },
           {
+            id: "receive-money",
+            label: "Recibir dinero",
+            href: "/api/v1/dashboard/profile#receive-id",
+          },
+          {
             id: "profile",
             label: "Ir a mi perfil",
             href: "/api/v1/dashboard/profile",
@@ -96,6 +101,10 @@ describe("DashboardHome", () => {
     expect(screen.getByRole("link", { name: "Ver historial" })).toHaveAttribute(
       "href",
       "/api/v1/dashboard/history",
+    );
+    expect(screen.getByRole("link", { name: "Recibir dinero" })).toHaveAttribute(
+      "href",
+      "/api/v1/dashboard/profile#receive-id",
     );
     expect(
       screen.getByText("No hay alertas operativas por ahora."),
